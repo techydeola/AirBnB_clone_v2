@@ -22,16 +22,19 @@ def hbnb():
     return "HBNB"
 
 
+@app.route('/c/')
 @app.route('/c/<text>', strict_slashes=False)
-def cDisplay(text):
+def cDisplay(text='is cool'):
     """
         This functions handles the C view
     """
-    newtext = text.replace('_', ' ')
-    return "C {}".format(newtext)
+    if '_' in text:
+        newtext = text.replace('_', ' ')
+        return "python {}".format(newtext)
+    return "C {}".format(text)
 
 
-@app.route('/python', strict_slashes=False)
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def pyDisplay(text='is cool'):
     """
