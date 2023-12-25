@@ -34,8 +34,8 @@ def cDisplay(text='is cool'):
     return "C {}".format(text)
 
 
-@app.route('/python/<text>', strict_slashes=False)
 @app.route('/python/', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def pyDisplay(text='is cool'):
     """
         This function handles the python display
@@ -44,6 +44,13 @@ def pyDisplay(text='is cool'):
         newtext = text.replace('_', ' ')
         return "python {}".format(newtext)
     return "Python {}".format(text)
+
+
+@app.route('/number/<n>', strict_slashes=False)
+def number(n):
+    """ This function handles the 'number' view """
+    if type(n) in ['int']:
+        return "{} is a number".format(n)
 
 
 if __name__ == '__main__':
