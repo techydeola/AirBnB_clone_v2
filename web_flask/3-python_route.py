@@ -1,46 +1,37 @@
 #!/usr/bin/python3
-""" This is a flask app module """
-
-
+""" Script that starts a Flask web application """
 from flask import Flask
-from markupsafe import escape
+
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route('/', strict_slashes=False)
-def hello():
-    """
-        This function handles the home view
-    """
-    return "Hello HBNB!"
+@app.route('/')
+def hello_hbnb():
+    """ Print Web """
+    return 'Hello HBNB!'
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route('/hbnb')
 def hbnb():
-    """
-        This function handles the HBNB view
-    """
-    return "HBNB"
+    """ Print Web """
+    return 'HBNB'
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def cDisplay(text='is cool'):
-    """
-        This functions handles the C view
-    """
-    newtext = text.replace('_', ' ')
-    return "python {}".format(newtext)
+@app.route('/c/<text>')
+def c_is_fun(text):
+    """ Print a char C followed by the value of the text variable """
+    return 'C {}'.format(text.replace('_', ' '))
 
 
-@app.route('/python/<text>', strict_slashes=False)
-@app.route('/python', strict_slashes=False)
-def pyDisplay(text='is cool'):
-    """
-        This function handles the python display
-    """
-    text = text.replace('_', ' ')
-    return "python {}".format(escape(text))
+@app.route('/python')
+@app.route('/python/<text>')
+def python_is_cool(text='is cool'):
+    """ Print Python, followed by the value of the text variable,
+    with default value of text: is cool"""
+    return 'Python {}'.format(text.replace('_', ' '))
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
