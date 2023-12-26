@@ -22,7 +22,6 @@ def hbnb():
     return "HBNB"
 
 
-@app.route('/c/', strict_slashes=False)
 @app.route('/c/<text>', strict_slashes=False)
 def cDisplay(text='is cool'):
     """
@@ -35,7 +34,7 @@ def cDisplay(text='is cool'):
 
 
 @app.route('/python/<text>', strict_slashes=False)
-@app.route('/python/', strict_slashes=False)
+@app.route('/python', strict_slashes=False)
 def pyDisplay(text='is cool'):
     """
         This function handles the python display
