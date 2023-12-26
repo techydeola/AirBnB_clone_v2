@@ -40,10 +40,8 @@ def pyDisplay(text='is cool'):
     """
         This function handles the python display
     """
-    if '_' in text:
-        newtext = text.replace('_', ' ')
-        return "python {}".format(newtext)
-    return "Python {}".format(text)
+    newtext = text.replace('_', ' ')
+    return "python {}".format(newtext)
 
 
 if __name__ == '__main__':

@@ -24,14 +24,12 @@ def hbnb():
 
 @app.route('/c/', strict_slashes=False)
 @app.route('/c/<text>', strict_slashes=False)
-def cDisplay(text='is cool'):
+def cDisplay(text):
     """
         This functions handles the C view
     """
-    if '_' in text:
-        newtext = text.replace('_', ' ')
-        return "python {}".format(newtext)
-    return "C {}".format(text)
+    newtext = text.replace('_', ' ')
+    return "python {}".format(newtext)
 
 
 @app.route('/python/', strict_slashes=False)
@@ -40,17 +38,14 @@ def pyDisplay(text='is cool'):
     """
         This function handles the python display
     """
-    if '_' in text:
-        newtext = text.replace('_', ' ')
-        return "python {}".format(newtext)
-    return "Python {}".format(text)
+    newtext = text.replace('_', ' ')
+    return "python {}".format(newtext)
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     """ This function handles the 'number' view """
-    if type(n) in ['int']:
-        return "{} is a number".format(n)
+    return "{:d} is a number".format(n)
 
 
 if __name__ == '__main__':
