@@ -27,10 +27,8 @@ def cDisplay(text='is cool'):
     """
         This functions handles the C view
     """
-    if '_' in text:
-        newtext = text.replace('_', ' ')
-        return "python {}".format(newtext)
-    return "C {}".format(text)
+    newtext = text.replace('_', ' ')
+    return "python {}".format(newtext)
 
 
 @app.route('/python/<text>', strict_slashes=False)
