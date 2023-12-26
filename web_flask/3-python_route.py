@@ -3,6 +3,7 @@
 
 
 from flask import Flask
+from markupsafe import escape
 app = Flask(__name__)
 
 
@@ -37,8 +38,8 @@ def pyDisplay(text='is cool'):
     """
         This function handles the python display
     """
-    newtext = text.replace('_', ' ')
-    return "python {}".format(newtext)
+    text = text.replace('_', ' ')
+    return "python {}".format(escape(text))
 
 
 if __name__ == '__main__':
