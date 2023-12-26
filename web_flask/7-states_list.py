@@ -10,7 +10,7 @@ app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
-def close_db():
+def close_db(exc):
     """ This function handles closing of the db """
     storage.close()
 
